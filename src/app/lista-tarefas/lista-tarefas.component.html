@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="content">
+      <h1>Lista de Tarefas</h1>
+  
+      <ul>
+        <li *ngFor="let tarefa of tarefas">
+          {{ tarefa.nome }}
+          <button class="btn-concluir" (click)="marcarConcluida(tarefa)">Concluir</button>
+          <button class="btn-editar" (click)="editarTarefa(tarefa)">Editar</button>
+          <button class="btn-excluir" (click)="excluirTarefa(tarefa)">Excluir</button>
+        </li>
+      </ul>
+  
+      <form (submit)="adicionarTarefa()">
+        <input type="text" [(ngModel)]="novaTarefa" placeholder="Nova Tarefa">
+        <button type="submit" class="btn-adicionar">Adicionar</button>
+      </form>
+  
+      <div *ngIf="tarefaEmEdicao">
+        <input type="text" [(ngModel)]="tarefaEmEdicao.nome">
+        <button (click)="salvarEdicaoTarefa()">Salvar</button>
+      </div>
+    </div>
+  </div>
